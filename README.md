@@ -1,2 +1,2 @@
 # MCDA
-Run run_main to get result.
+If you find this code useful, please cite:
