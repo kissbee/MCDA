@@ -42,7 +42,7 @@ L = ones(n, n);
 F = ones(n, c);
 F = orth(F);%%%
 
-maxIter = 100;
+maxIter = 100; % In some experiments, maxIter is set to 5.
 
 %% =========================Normalization=========================
 % Normalization
