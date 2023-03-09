@@ -1,2 +1,3 @@
 # MCDA
-If you find this code useful, please cite:
+Matlab implementation of 'Multi-view clustering via double spaces structure learning and adaptive multiple
+projection regression learning'.
