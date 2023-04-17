@@ -3,7 +3,7 @@ function F  = MCDA(X,V,n,c,k,alpha,beta,gamma,theta1,theta2)
 
 % Lv1 Lv2
 for iv = 1:V
-    S = constructS_PNG(X{iv}, k, 1); %%  input: dv * n
+    S = constructS_PNG(X{iv}', k, 1); %%  input: dv * n
     S1= (S+S')/2;
     D1 = diag(sum(S1));
     Lv1{iv} = D1-S1; % first-order Laplacian matrix
@@ -30,7 +30,7 @@ end
 
 % Wv dv pv qv mv
 for iv=1:V
-    dv(iv) = size(X{iv}, 1); % dimension of each view
+    dv(iv) = size(X{iv}, 2); % dimension of each view
     Wv{iv} = ones(dv(iv), c);
     pv(iv) = 1.0/V;
     qv(iv) = 1.0/V;
@@ -40,14 +40,13 @@ end
 % L  F
 L = ones(n, n);
 F = ones(n, c);
-F = orth(F);%%%
+F = orth(F);
 
-maxIter = 5; % 
-
+maxIter = 5;
 %% =========================Normalization=========================
 % Normalization
 for i = 1:V
-    fea = X{i}';
+    fea = X{i};
     fea = mapminmax(fea,0,1);  % n * dv
     X{i}= fea'; % dv * n
 end
@@ -58,12 +57,12 @@ while iter<=maxIter
     
     % Updating pv, qv, mv
     for iv = 1:V
-        zv(iv) = norm(X{iv}'* Wv{iv}-F,'fro');
+        hv(iv) = norm(X{iv}'* Wv{iv}-F,'fro');
     end
     for iv = 1:V
         qv(iv) = 0.5/norm(Lv{iv}-L,'fro');
         mv(iv) = 0.5/norm(Fv{iv}*Rv{iv}-F,'fro');
-        pv(iv) = zv(iv)/sum(zv);
+        pv(iv) = hv(iv)/sum(hv);
     end
     
     % Updating Wv
@@ -147,7 +146,7 @@ while iter<=maxIter
     
     iter = iter+1;
 end
-
+disp(iter)
 %% =============================Plot=============================
 
 % Plot convergence curve
