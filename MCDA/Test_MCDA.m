@@ -7,7 +7,7 @@ function  Test_MCDA(X, Y)
 % Output:     result: clustering result
 
 %% k  * paras
-% MSRCV1	5	*50  0.5  5  1  0.5				
+% MSRC_v1	5	*50  0.5  5  1  0.5				
 % MSRC	12	*100000  5  0.0005  1  0.01				
 % HW	20	*100000  5000  1  0.00005  5  				
 % NGs	7	*50 10000 0.1 0.05 0.0000005				
