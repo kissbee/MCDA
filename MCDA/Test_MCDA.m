@@ -34,11 +34,14 @@ tic;
 %% Algorithem start.
 F = MCDA(X,V,n,c,k,alpha,beta,gamma,theta1,theta2);
 
-pre_label = kmeans(F,c,'maxiter',100,'replicates',10,'emptyaction','singleton');
-result=Clustering8Measure(Y, pre_label);% result = [ACC nmi Purity Fscore Precision Recall AR Entropy];
+for i=1:20
+    pre_label = kmeans(F,c,'maxiter',100,'replicates',10,'emptyaction','singleton');
+    result(i,:)=Clustering8Measure(Y, pre_label);% result = [ACC nmi Purity Fscore Precision Recall AR Entropy];
+end
+res = [mean(result);std(result)];
 
 %% Display results
-disp(result);
+disp(res);
 
 toc;
 time=toc;
