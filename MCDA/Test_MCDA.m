@@ -6,18 +6,8 @@ function  Test_MCDA(X, Y)
 
 % Output:     result: clustering result
 
-%% k  * paras
-% MSRC_v1	5	*50  0.5  5  1  0.5				
-% MSRC	12	*100000  5  0.0005  1  0.01				
-% HW	20	*100000  5000  1  0.00005  5  				
-% NGs	7	*50 10000 0.1 0.05 0.0000005				
-% WikipediaArticles	75	*100  100000  1  0.001  0.001 				
-% Prokaryotic	33	*1000  10000  10  0.1  0.0001 				
-% Uci_digit	14	*100000  1000  0.1  0.00005  0.001				
-% Umist_mtv	5	*100  100  500000  1000  1000	
-% Webkb	38	*1000  100  0.00001  1  0.1		
-
 k = 5;
+
 alpha=50;
 beta=0.5;
 gamma=5;
